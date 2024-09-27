@@ -46,16 +46,16 @@ class Predictor(BasePredictor):
 
     def predict(
         self,
-        source: Path = Input(
-            description="Source image or video file"
+        face_image: Path = Input(
+            description="Source image"
         ),
-        driving: Path = Input(
-            description="Driving image or video file"
+        driving_video: Path = Input(
+            description="Driving video"
         )
     ) -> list[Path]:
 
         # 组装ArgumentConfig
-        args = ArgumentConfig(source=str(source), driving=str(driving))
+        args = ArgumentConfig(source=str(face_image), driving=str(driving_video))
 
         # Specify configs for inference
         inference_cfg = partial_fields(InferenceConfig, args.__dict__)
