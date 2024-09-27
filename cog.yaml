@@ -9,7 +9,7 @@ build:
   python_packages:
     # fix for pydantic issues in cog
     # https://github.com/replicate/cog/issues/1623
-    - "albumentations==1.4.3"
+    - "albumentations==1.4.1"
     - "pydantic==1.10.18"
 
     - "torch"
@@ -28,7 +28,6 @@ build:
     - "matplotlib==3.9.0"
     - "imageio-ffmpeg==0.5.1"
     - "tyro==0.8.5"
-    - "gradio==4.37.1"
     - "pykalman==0.9.7"
     - "pillow>=10.2.0"
     - "onnxruntime-gpu==1.18.0"
