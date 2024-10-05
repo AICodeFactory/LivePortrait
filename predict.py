@@ -13,6 +13,7 @@ from src.config.crop_config import CropConfig
 from src.live_portrait_pipeline import LivePortraitPipeline
 from src.live_portrait_pipeline_animal import LivePortraitPipelineAnimal
 from cog import BasePredictor, Input, Path
+import random
 
 def partial_fields(target_class, kwargs):
     return target_class(**{k: v for k, v in kwargs.items() if hasattr(target_class, k)})
