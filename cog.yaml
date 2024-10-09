@@ -55,6 +55,8 @@ build:
     - nvcc --version
     - python -c "import torch; print(torch.cuda.is_available())"  # 检查 PyTorch 是否检测到 CUDA
 
+    - pip install pybind11
+    - apt-get install pybind11-dev
     - cd /pre-build/src/utils/dependencies/XPose/models/UniPose/ops && CUDA_HOME=/usr/local/cuda python setup.py build install
 
 
