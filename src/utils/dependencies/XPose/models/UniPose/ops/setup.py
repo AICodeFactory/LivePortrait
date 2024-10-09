@@ -57,7 +57,7 @@ def get_extensions():
 
     # import ipdb; ipdb.set_trace()
 
-    #if torch.cuda.is_available() and CUDA_HOME is not None:
+
     extension = CUDAExtension
     sources += source_cuda
     define_macros += [("WITH_CUDA", None)]
@@ -67,8 +67,7 @@ def get_extensions():
         "-D__CUDA_NO_HALF_CONVERSIONS__",
         "-D__CUDA_NO_HALF2_OPERATORS__",
     ]
-    #else:
-        #raise NotImplementedError('Cuda is not availabel')
+
 
     sources = [os.path.join(extensions_dir, s) for s in sources]
     include_dirs = [extensions_dir]
