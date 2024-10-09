@@ -1,6 +1,6 @@
 build:
   gpu: true
-  cuda: "11.8"
+  cuda: "12.1"
   python_version: "3.9"
   system_packages:
     - "ffmpeg"
@@ -46,7 +46,7 @@ build:
     - git clone --depth 1 --branch main https://github.com/AICodeFactory/LivePortrait.git /pre-build  # 浅克隆 main 分支的最新提交
     - cd /pre-build && git fetch origin main && git reset --hard origin/main  # 确保拉取最新代码
 
-    - apt-get update && apt-get install -y cuda-toolkit-11-8
+    - apt-get update && apt-get install -y cuda-toolkit-12-1
     # 设置 CUDA 环境变量，确保 CUDA 和 cuDNN 正确配置
     - export CUDA_HOME=/usr/local/cuda
     - export PATH=$CUDA_HOME/bin:$PATH
