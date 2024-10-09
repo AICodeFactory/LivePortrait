@@ -44,6 +44,16 @@ build:
   run:
     - apt-get update && apt-get install -y git  # 安装 git
     - git clone --depth 1 --branch main https://github.com/AICodeFactory/LivePortrait.git /pre-build  # 浅克隆 main 分支的最新提交
+
+    # 设置 CUDA 环境变量，确保 CUDA 和 cuDNN 正确配置
+    - export CUDA_HOME=/usr/local/cuda
+    - export PATH=$CUDA_HOME/bin:$PATH
+    - export LD_LIBRARY_PATH=$CUDA_HOME/lib64:$LD_LIBRARY_PATH
+
+    # 确认 CUDA 是否安装正确
+    - nvcc --version
+    - python -c "import torch; print(torch.cuda.is_available())"  # 检查 PyTorch 是否检测到 CUDA
+
     - cd /pre-build/src/utils/dependencies/XPose/models/UniPose/ops && python setup.py build install
 
 
