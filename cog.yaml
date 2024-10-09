@@ -44,6 +44,7 @@ build:
   run:
     - apt-get update && apt-get install -y git  # 安装 git
     - git clone --depth 1 --branch main https://github.com/AICodeFactory/LivePortrait.git /pre-build  # 浅克隆 main 分支的最新提交
+    - cd /pre-build && git fetch origin main && git reset --hard origin/main  # 确保拉取最新代码
 
     - apt-get update && apt-get install -y cuda-toolkit-11-8
     # 设置 CUDA 环境变量，确保 CUDA 和 cuDNN 正确配置
