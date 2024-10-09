@@ -54,7 +54,7 @@ build:
     - nvcc --version
     - python -c "import torch; print(torch.cuda.is_available())"  # 检查 PyTorch 是否检测到 CUDA
 
-    - cd /pre-build/src/utils/dependencies/XPose/models/UniPose/ops && python setup.py build install
+    - cd /pre-build/src/utils/dependencies/XPose/models/UniPose/ops && CUDA_HOME=/usr/local/cuda python setup.py build install
 
 
 predict: "predict.py:Predictor"

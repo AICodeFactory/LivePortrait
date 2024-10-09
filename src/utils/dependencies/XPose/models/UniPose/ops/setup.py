@@ -20,6 +20,13 @@ from setuptools import setup
 
 requirements = ["torch", "torchvision"]
 
+# 如果 CUDA_HOME 为空，则手动设置
+if CUDA_HOME is None:
+    os.environ['CUDA_HOME'] = '/usr/local/cuda'
+    CUDA_HOME = '/usr/local/cuda'
+
+print(f"Using CUDA_HOME: {CUDA_HOME}")
+
 def get_extensions():
     this_dir = os.path.dirname(os.path.abspath(__file__))
     extensions_dir = os.path.join(this_dir, "src")
