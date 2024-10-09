@@ -17,6 +17,7 @@ from torch.utils.cpp_extension import CUDAExtension
 
 from setuptools import find_packages
 from setuptools import setup
+import subprocess
 
 requirements = ["torch", "torchvision"]
 
@@ -26,6 +27,20 @@ if CUDA_HOME is None:
     CUDA_HOME = '/usr/local/cuda'
 
 print(f"Using CUDA_HOME: {CUDA_HOME}")
+
+# 检查 nvcc 是否可用
+try:
+    subprocess.run(["nvcc", "--version"], check=True)
+    print("nvcc is available")
+except subprocess.CalledProcessError:
+    print("nvcc is not available")
+    raise
+
+print(f"CUDA_HOME: {os.getenv('CUDA_HOME')}")
+subprocess.run(["nvcc", "--version"], check=True)
+
+print(f"LD_LIBRARY_PATH: {os.getenv('LD_LIBRARY_PATH')}")
+
 
 def get_extensions():
     this_dir = os.path.dirname(os.path.abspath(__file__))
