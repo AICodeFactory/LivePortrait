@@ -39,11 +39,13 @@ build:
     - pybind11  #动物
 
   # 动物：在安装依赖后运行的自定义命令
-  hooks:
-    post_install:
-      - cd src/utils/dependencies/XPose/models/UniPose/ops
-      - python setup.py build install
-      - cd -
+  # 这一步执行时，cog尚未将项目目录挂载到容器中，所以无法通过路径引用文件
+  # 因此，需要首先安装git，然后clone项目，再进入相应目录
+  run:
+    - apt-get update && apt-get install -y git  # 安装 git
+    - git clone --depth 1 --branch main https://github.com/KwaiVGI/LivePortrait.git /pre-build  # 浅克隆 main 分支的最新提交
+    - cd /pre-build/src/utils/dependencies/XPose/models/UniPose/ops
+    - python setup.py build install
 
 
 predict: "predict.py:Predictor"
