@@ -43,9 +43,8 @@ build:
   # 因此，需要首先安装git，然后clone项目，再进入相应目录
   run:
     - apt-get update && apt-get install -y git  # 安装 git
-    - git clone --depth 1 --branch main https://github.com/KwaiVGI/LivePortrait.git /pre-build  # 浅克隆 main 分支的最新提交
-    - cd /pre-build/src/utils/dependencies/XPose/models/UniPose/ops
-    - python setup.py build install
+    - git clone --depth 1 --branch main https://github.com/AICodeFactory/LivePortrait.git /pre-build  # 浅克隆 main 分支的最新提交
+    - cd /pre-build/src/utils/dependencies/XPose/models/UniPose/ops && python setup.py build install
 
 
 predict: "predict.py:Predictor"
